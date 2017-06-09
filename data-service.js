@@ -145,6 +145,6 @@ module.exports.getDepartments = function() {
                 reject("No Result Return!!!");
             }
         }
-        resolve(arryGetDepartments);
-     });
+    resolve(arryGetDepartments);
+    });
 }
