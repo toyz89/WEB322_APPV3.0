@@ -56,7 +56,6 @@ module.exports.getAllEmployees = function(){
     })
 }
 
-
 module.exports.getEmployeesByStatus = function(status){
     var arryByStatus = [];
     return new Promise(function(resolve,reject){
@@ -86,7 +85,7 @@ module.exports.getEmployeesByDepartment = function(department){
     resolve(arryByDepartment);
     });
 }
-//
+
 module.exports.getEmployeesByManager = function(manager) {
     var arrayGetEmployeesByMannager = [];
 
