@@ -30,14 +30,12 @@ app.get("/about", function(req,res){
 app.get("/employees", function(req,res){
 
     if(req.query.status){
-      console.log("statues");
       data_service.getEmployeesByStatus(req.query.status).then(function(data){
         res.json(data);
       }).cath(function(err){
         res.json(err);
       });
     }else if(req.query.department){
-      console.log("deparments");
       data_service.getEmployeesByDepartment(req.query.department).then(function(data){
         res.json(data);
       }).catch(function(err){
@@ -60,8 +58,7 @@ app.get("/employees", function(req,res){
 });
 
 
-app.get("/employee/:num", function(req,res){
-  console.log("666666");
+app.get("/employees/:num", function(req,res){
   data_service.getEmployeeByNum(req.params.num).then(function(data){
     res.json(data);
   }).catch(function(err){

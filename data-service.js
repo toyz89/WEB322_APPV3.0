@@ -108,7 +108,6 @@ module.exports.getEmployeesByManager = function(manager) {
 
 module.exports.getEmployeeByNum = function(num) {
     var arryEmployeeNum = [];
-    console.log("666666");
     return new Promise(function(resolve,reject){
         if(employess.length == 0){
             reject("No Result Returned!");
