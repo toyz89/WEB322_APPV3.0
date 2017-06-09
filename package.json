@@ -11,5 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/cryptic-waters-33866.git"
   }
 }

@@ -19,7 +19,7 @@ module.exports.initialize = function(){
         }catch(ex){
             reject("Unable to read file!");
         }
-        resolve("Success!");
+        resolve("Good!!! It's successfully read JSON file.");
     });
 }
 // alternative solution for initialize JSON file:
@@ -47,10 +47,13 @@ module.exports.getAllEmployees = function(){
     var arryAllEmployees=[];
     return new Promise(function(resolve,reject){
         if(employess.length==0){
-            reject("No Results Returned!");
+            reject("No Results Returned!!!");
         }else{
             for (var i = 0; i < employess.length; i++) {
                 arryAllEmployees.push(employess[i]);
+            }
+            if (arryAllEmployees.length == 0){
+                reject("No Result Returned!!!");
             }
         }
         resolve(arryAllEmployees);
@@ -61,14 +64,13 @@ module.exports.getAllEmployees = function(){
 module.exports.getEmployeesByStatus = function(status){
     var arryByStatus = [];
     return new Promise(function(resolve,reject){
-        if(employess.length == 0){
-            reject("No Results Returned!");
-        }else{
-            for(let i = 0; i < employess.length; i++){
-                if(employess[i].status == status){
-                    arryByStatus.push(employess[i]);
-                }
+        for(let i = 0; i < employess.length; i++){
+            if(employess[i].status == status){
+                arryByStatus.push(employess[i]);
             }
+        }
+        if (arryByStatus.length == 0){
+            reject("No Result Returned!!!");
         }
         resolve(arryByStatus);
     });
@@ -78,47 +80,53 @@ module.exports.getEmployeesByDepartment = function(department){
     var arryByDepartment = [];
     return new Promise(function(resolve,reject){
         if(employess.length == 0){
-            reject("No Result Returned!");
+            reject("No Result Returned!!!");
         }else{
             for(let i = 0; i < employess.length; i++){
                 if(employess[i].department == department){
                     arryByDepartment.push(employess[i]);
+                 }
+             }
+            if(arryByDepartment.length == 0){
+                 reject("No Result Returned!!!");
+             }
+         }
+         resolve(arryByDepartment);
+    });
+}
+//
+module.exports.getEmployeesByManager = function(manager) {
+    var arrayGetEmployeesByMannager = [];
+
+    return new Promise(function(resolve,reject) {
+        if(employess.length == 0){
+            reject("No Result Returned!!!");
+        } else {
+            for (let i = 0; i < employess.length; i++) {
+                if (employess[i].employeeManagerNum == manager) {
+                    arrayGetEmployeesByMannager.push(employess[i]);
                 }
             }
+            if (arrayGetEmployeesByMannager.length == 0 ) {
+                reject("No Result Returned!!!");
+            }
         }
-        resolve(arryByDepartment);
+        resolve(arrayGetEmployeesByMannager);
     });
 }
 
-module.exports.getEmployeesByManager = function(manager) {
-    var arryByManager = [];
-    return new Promise(function(resolve,reject){
-        if(employess.length == 0){
-            reject("No Result Returned!");
-        }else{
-            for(let j = 0; j < employess.length; j++){
-                if(employess[j].employeeManagerNum == manager){
-                    arryByManager.push(employess[j]);
-                }
-            }
-        }
-        resolve(arryByManager);
-     });
-}
-
 module.exports.getEmployeeByNum = function(num) {
-    var arryEmployeeNum = [];
     return new Promise(function(resolve,reject){
         if(employess.length == 0){
-            reject("No Result Returned!");
+            reject("No Result Returned!!!");
         }else{
             for(let j = 0; j < employess.length; j++){
                 if(employess[j].employeeNum == num){
-                    arryEmployeeNum.push(employess[j]);
+                    resolve(employess[j]);
                 }
             }
+            reject("No Result Returned!!!");
         }
-        resolve(arryEmployeeNum);
      });
 }
 
@@ -126,13 +134,16 @@ module.exports.getManagers = function() {
     var arryGetManagers = [];
     return new Promise(function(resolve,reject){
         if(employess.length == 0){
-            reject("No Result Returned!");
+            reject("No Result Returned!!!");
         }else{
             for (var q = 0; q < employess.length; q++) {
                  if (employess[q].isManager == true) {
                     arryGetManagers.push(employess[q]);       
                  }
             }
+            if (arryGetManagers.length == 0) {
+                     reject("No Result Returned!!!");
+             }
         }
         resolve(arryGetManagers);
      });
@@ -142,10 +153,13 @@ module.exports.getDepartments = function() {
     var arryGetDepartments = [];
     return new Promise(function(resolve,reject){
         if(employess.length == 0){
-            reject("No Result Returned!");
+            reject("No Result Returned!!!");
         }else{
             for (var v = 0; v < departments.length; v++) {
                 arryGetDepartments.push(departments[v]);       
+            }
+            if (arryGetDepartments.length == 0) {
+                reject("No Result Return!!!");
             }
         }
         resolve(arryGetDepartments);

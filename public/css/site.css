@@ -1,6 +1,6 @@
-/*h3{
+h3{
     color: red;
-}*/
+}
 
 body{
 	margin: 0;
@@ -19,12 +19,14 @@ nav{
 }
 		
 nav ul{
+	font-family: 'Barrio', cursive;
 	list-style-type: none;
 	padding-left:0px;
 	margin:0px;
 }
 		
 nav ul li{
+	
 	display:inline-block;
 	background-color: #444;
 }
@@ -51,3 +53,8 @@ footer h2{
 	font-size:13px;
 	padding:0 5px;	
 }
+
+P{
+	font-family: 'Pacifico', cursive;
+}
+

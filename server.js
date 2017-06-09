@@ -4,7 +4,7 @@
 *  of this assignment has been copied manually or electronically from any other source 
 *  (including 3rd party web sites) or distributed to other students.
 * 
-*  Name: ______________________ Student ID: ______________ Date: ________________
+*  Name: ___Xiaochen Wang__ Student ID: ___015297153_____ Date: ____09-06-2017__
 *
 *  Online (Heroku) Link: ________________________________________________________
 *
@@ -14,7 +14,21 @@ var app = express();
 var path = require("path");
 var data_service = require("./data-service.js");
 
-var HTTP_PORT = process.env.PORT || 8080;
+var HTTP_PORT = process.env.PORT || 3000;
+
+function onHttpStart() {
+    console.log("Express http server listening on: " + HTTP_PORT);
+    return new Promise (function(res,req){
+    data_service.initialize().then(function(data){
+      console.log(data)
+    }).catch(function(err){
+      console.log(err);
+    });
+});
+}
+
+// Load CSS file
+app.use(express.static('public'));
 
 // setup a 'route' to listen on the default url path (http://localhost)
 app.get("/", function(req,res){
@@ -32,37 +46,36 @@ app.get("/employees", function(req,res){
     if(req.query.status){
       data_service.getEmployeesByStatus(req.query.status).then(function(data){
         res.json(data);
-      }).cath(function(err){
-        res.json(err);
+      }).catch(function(err){
+        res.json({message: err});
       });
     }else if(req.query.department){
       data_service.getEmployeesByDepartment(req.query.department).then(function(data){
         res.json(data);
       }).catch(function(err){
-        res.json(err);
+        res.json({message: err});
       });
     }else if(req.query.manager){
-      console.log("manager");
       data_service.getEmployeesByManager(req.query.manager).then(function(data){
         res.json(data);
       }).catch(function(err){
-        rss.json(err);
-      })
+        res.json({message: err});
+      });
     }else{
       data_service.getAllEmployees().then(function(data){
         res.json(data);
       }).catch(function(err){
-        res.json(err);
+        res.json({message: err});
       });
     }
 });
 
 
-app.get("/employees/:num", function(req,res){
+app.get("/employee/:num", function(req,res){
   data_service.getEmployeeByNum(req.params.num).then(function(data){
     res.json(data);
   }).catch(function(err){
-      res.json(err);
+      res.json({message: err});
   });
 });
 
@@ -70,7 +83,7 @@ app.get("/managers", function(req,res){
       data_service.getManagers().then(function(data){
         res.json(data);
       }).catch(function(err){
-        res.json(err);
+        res.json({message: err});
       });
 });
 
@@ -78,7 +91,7 @@ app.get("/departments", function(req,res){
       data_service.getDepartments().then(function(data){
         res.json(data);
       }).catch(function(err){
-        res.json(err);
+        res.json({message: err});
       });
 });
 
@@ -86,13 +99,18 @@ app.use(function(req, res) {
   res.status(404).send("Sorry!!!!!!!>>>Page Not Found! <<<:(");
 });
 
-app.listen(HTTP_PORT, function(res,req){
-  console.log("Website listen on port 8080");
-  data_service.initialize().then(function(data){
-      console.log(data)
-    }).catch(function(err){
-      console.log(err);
-    });
-});
+app.listen(HTTP_PORT, onHttpStart);
+//Alternative solution for app.listen method.
+// app.listen(HTTP_PORT, function(res,req){
+//   console.log("Express http server listening on: " + HTTP_PORT);
+//   data_service.initialize().then(function(data){
+//       console.log(data)
+//     }).catch(function(err){
+//       console.log(err);
+//     });
+// });
 
-app.use(express.static('public'));
+
+
+// alternative method.
+// app.use(express.static(path.join(__dirname, 'public')));
