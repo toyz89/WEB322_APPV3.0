@@ -2,8 +2,8 @@
 
 var fs = require("fs");
 
-var employess = [];
-var departments = [];
+var employess = []; //global array
+var departments = []; //global array
 
 module.exports.initialize = function(){
     return new Promise(function(resolve,reject){
@@ -149,6 +149,3 @@ module.exports.getDepartments = function() {
         resolve(arryGetDepartments);
      });
 }
-
-
-

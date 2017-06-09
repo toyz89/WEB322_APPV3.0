@@ -29,6 +29,8 @@ function onHttpStart() {
 
 // Load CSS file
 app.use(express.static('public'));
+// alternative method.
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // setup a 'route' to listen on the default url path (http://localhost)
 app.get("/", function(req,res){
@@ -100,6 +102,7 @@ app.use(function(req, res) {
 });
 
 app.listen(HTTP_PORT, onHttpStart);
+
 //Alternative solution for app.listen method.
 // app.listen(HTTP_PORT, function(res,req){
 //   console.log("Express http server listening on: " + HTTP_PORT);
@@ -109,8 +112,3 @@ app.listen(HTTP_PORT, onHttpStart);
 //       console.log(err);
 //     });
 // });
-
-
-
-// alternative method.
-// app.use(express.static(path.join(__dirname, 'public')));
