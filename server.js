@@ -13,6 +13,8 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var data_service = require("./data-service.js");
+const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 var HTTP_PORT = process.env.PORT || 3000;
 
@@ -29,6 +31,25 @@ function onHttpStart() {
 
 // Load CSS file
 app.use(express.static('public'));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.engine(".hbs", exphbs({
+    extname: ".hbs",
+    defaultLayout: 'layout',
+    helpers: {
+        equal: function (lvalue, rvalue, options) {
+        if (arguments.length < 3)
+            throw new Error("Handlebars Helper equal needs 2 parameters");
+        if (lvalue != rvalue) {
+            return options.inverse(this);
+        } else {
+            return options.fn(this);
+        }
+    }
+}}));
+app.set("view engine", ".hbs");
+
+
 // alternative method.
 // app.use(express.static(path.join(__dirname, 'public')));
 
@@ -47,7 +68,7 @@ app.get("/employees", function(req,res){
 
     if(req.query.status){
       data_service.getEmployeesByStatus(req.query.status).then(function(data){
-        res.json(data);
+         res.json(data);
       }).catch(function(err){
         res.json({message: err});
       });
