@@ -64,31 +64,31 @@ app.get("/about", function(req,res){
     res.render("about");
 });
 
-app.get(res.render("employeeList",{data:data,title:"Employees"}), function(req,res){
+app.get("/employees", function(req,res){
 
     if(req.query.status){
         data_service.getEmployeesByStatus(req.query.status).then(function(data){
-            res.render("employeeList", {data: {}, title: "Employees"})
+            res.render("employeeList",{data:data,title:"Employees"});
         }).catch(function(err){
-            res.json({message: err});
+            res.render("employeeList", {data: {}, title: "Employees"});
         });
     }else if(req.query.department){
         data_service.getEmployeesByDepartment(req.query.department).then(function(data){
-            res.json(data);
+            res.render("employeeList",{data:data,title:"Employees"});
         }).catch(function(err){
-            res.json({message: err});
+            res.render("employeeList", {data: {}, title: "Employees"});
         });
     }else if(req.query.manager){
          data_service.getEmployeesByManager(req.query.manager).then(function(data){
-            res.json(data);
+            res.render("employeeList",{data:data,title:"Employees"});
         }).catch(function(err){
-            res.json({message: err});
+            res.render("employeeList", {data: {}, title: "Employees"});
         });
     }else{
          data_service.getAllEmployees().then(function(data){
-             res.json(data);
+             res.render("employeeList",{data:data,title:"Employees"});
          }).catch(function(err){
-             res.json({message: err});
+             res.render("employeeList", {data: {}, title: "Employees"});
         });
     }
 });
