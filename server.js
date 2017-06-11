@@ -56,12 +56,12 @@ app.set("view engine", ".hbs");
 // setup a 'route' to listen on the default url path (http://localhost)
 app.get("/", function(req,res){
    //res.send("Hello World<br /><a href='/about'>Go to the about page</a>");
-   res.sendFile(path.join(__dirname + "/views/home.html"));
+   res.render("home");
 });
 
 // setup another route to listen on /about
 app.get("/about", function(req,res){
-  res.sendFile(path.join(__dirname + "/views/about.html"));
+    res.render("about");
 });
 
 app.get("/employees", function(req,res){
