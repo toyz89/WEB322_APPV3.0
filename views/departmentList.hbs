@@ -1,0 +1,37 @@
+{{!--<div class = "row">
+    <div class = "col-md-12">
+        <h1> {{{title}}}</h1>
+        <hr />
+    </div>
+</div>
+<div class = "row">
+    <div class = "col-md-12">
+        {{#each data}}
+            {{departmentId}} {{departmentName}}
+        {{/each}}
+    </div>
+</div>--}}
+
+<div class = "row">
+    <div class="col-md-12">
+        <h1>{{title}}<a herf="/employees/add" class = "btn btn-success pull-right" style="margin-top:5px;">Add New Employees</a></h1>
+        <hr />
+    </div>
+</div>
+<div class = "col-md-12">
+    <table border = "0" >
+        <thead>
+            <tr>
+                <th> Department Number </th>
+                <th> Department Name </th>
+            </tr>
+        </thead>
+    {{#each data}}
+            <tr>
+                {{departmentId}} {{departmentName}}
+            </tr>
+            <hr />
+            </tbody>
+        </table>
+        {{/each}}
+</div>
