@@ -1,14 +1,14 @@
 /*********************************************************************************
 *  WEB322 –Assignment02
 *  I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part 
-*  of this assignment has been copied manually or electronically from any other source 
+*  of this assignment has been copied manually or electronically from any other source
 *  (including 3rd party web sites) or distributed to other students.
-* 
+*
 *  Name: ___Xiaochen Wang__ Student ID: ___015297153_____ Date: ____09-06-2017__
 *
 *  Online (Heroku) Link:  https://cryptic-waters-33866.herokuapp.com
 *
-********************************************************************************/ 
+********************************************************************************/
 var express = require("express");
 var app = express();
 var path = require("path");
@@ -57,7 +57,6 @@ app.set("view engine", ".hbs");
 app.get("/", function(req,res){
    //res.send("Hello World<br /><a href='/about'>Go to the about page</a>");
    res.render("home");
-   console.log("wxc");
 });
 
 // setup another route to listen on /about
@@ -112,14 +111,19 @@ app.get("/managers", function(req,res){
 
 app.get("/departments", function(req,res){
       data_service.getDepartments().then(function(data){
-          res.render("employeeList", {data: data, title: "Department"});
+          res.render("departmentList", {data: data, title: "Department"});
       }).catch(function(err){
-          res.render("employeesList",{data: {}, title: "Department"});
+          res.render("departmentList",{data: {}, title: "Department"});
       });
 });
 
 app.get("/employees/add", function(req,res){
     res.render("addEmployee");
+});
+
+app.post("/employee/add", function(req,res){
+    console.log(req.body);
+    res.redirect("/employees");
 });
 
 app.use(function(req, res) {

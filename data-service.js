@@ -6,6 +6,7 @@ var employess = []; //global array
 var departments = []; //global array
 
 module.exports.initialize = function(){
+    var emCount = employess.length;
     return new Promise(function(resolve,reject){
         try{
             fs.readFile('./data/employees.json', function(err, data){
