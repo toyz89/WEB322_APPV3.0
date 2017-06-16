@@ -1,0 +1,33 @@
+<div class = "row">
+    <div class="col-md-12">
+        <h1>{{title}}<a herf="/employees/add" class = "btn btn-success pull-right" style="margin-top:5px;">Add New Employees</a></h1>
+        <hr />
+    </div>
+</div>
+<div class = "col-md-12">
+        {{#each data}}
+        <table border = "1" >
+            <thead>
+                <th> Employee Num </th>
+                <th> Full Name </th>
+                <th> Email </th>
+                <th> Address </th>
+                <th> Manager ID </th>
+                <th> Status </th>
+                <th> Department </th>
+                <th> Hired On </th>
+            </thead>
+        </tr>
+        <tr>
+            <td> {{{employeeNum}}} </td>
+            <td>{{firstName}} {{last_name}} </td>
+            <td> {{{email}}} </td>
+            <td> {{{addressStreet}}} {{{addresCity}}} {{{addressState}}} {{{addressPostal}}} </td>
+            <td> {{{employeeManagerNum}}} </td> 
+            <td> {{{status}}} </td>
+            <td> {{{department}}} </td>
+            <td> {{{hireDate}}} </td>
+        </tr>
+        <hr />
+        {{/each}}
+</div>

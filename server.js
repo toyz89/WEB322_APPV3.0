@@ -37,7 +37,7 @@ app.engine(".hbs", exphbs({
     extname: ".hbs",
     defaultLayout: 'layout',
     helpers: {
-        equal: function (lvalue, rvalue, options) {
+        equal: (lvalue, rvalue, options) => {
         if (arguments.length < 3)
             throw new Error("Handlebars Helper equal needs 2 parameters");
         if (lvalue != rvalue) {
@@ -57,6 +57,7 @@ app.set("view engine", ".hbs");
 app.get("/", function(req,res){
    //res.send("Hello World<br /><a href='/about'>Go to the about page</a>");
    res.render("home");
+   console.log("wxc");
 });
 
 // setup another route to listen on /about
@@ -69,6 +70,7 @@ app.get("/employees", function(req,res){
     if(req.query.status){
         data_service.getEmployeesByStatus(req.query.status).then(function(data){
             res.render("employeeList",{data:data,title:"Employees"});
+             console.log("haha");
         }).catch(function(err){
             res.render("employeeList", {data: {}, title: "Employees"});
         });
@@ -94,26 +96,26 @@ app.get("/employees", function(req,res){
 });
 
 app.get("/employee/:num", function(req,res){
-  data_service.getEmployeeByNum(req.params.num).then(function(data){
-    res.json(data);
-  }).catch(function(err){
-      res.json({message: err});
-  });
+    data_service.getEmployeeByNum(req.params.num).then(function(data){
+        res.json(data);
+    }).catch(function(err){
+        res.json({message: err});
+    });
 });
 
 app.get("/managers", function(req,res){
-      data_service.getManagers().then(function(data){
-        res.json(data);
-      }).catch(function(err){
-        res.json({message: err});
-      });
+    data_service.getManagers().then(function(data){
+        res.render("employeeList", {data: data, title: "Employees (Managers)"});
+    }).catch(function(err){
+        res.render("employeeList", {data: {}, title: "Employees {Managers}"});
+    });
 });
 
 app.get("/departments", function(req,res){
       data_service.getDepartments().then(function(data){
-        res.json(data);
+        res.render("employeeList", {data:data, title: "Department"});
       }).catch(function(err){
-        res.json({message: err});
+        res.render("employeesList",{data: {}, title: "Department"});
       });
 });
 
