@@ -119,15 +119,22 @@ app.get("/departments", function(req,res){
 
 app.get("/employees/add", function(req,res){
     res.render("addEmployee");
+    
 });
 
-app.post("/employee/add", function(req,res){
+app.post("/employees/add", function(req,res){
     data_service.addEmployee(req.body).then(function(data){
         res.redirect("/employees");
+        
     }).catch(function(err){
         console.log(err);
     })
     console.log(req.body);
+});
+
+app.post("/employees/update", (req, res) => {
+    console.log(req.body);
+    res.redirect("/employees");
 });
 
 app.use(function(req, res) {

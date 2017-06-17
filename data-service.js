@@ -7,12 +7,13 @@ var departments = []; //global array
 var empCount = 0;
 
 module.exports.initialize = function(){
-    empCount = employess.length;
+    
     return new Promise(function(resolve,reject){
         try{
             fs.readFile('./data/employees.json', function(err, data){
                 if(err) throw err;
                 employess = JSON.parse(data);
+                empCount = employess.length;
             });
             fs.readFile('./data/departments.json', function(err,data){
                 if(err) throw err;
@@ -152,11 +153,10 @@ module.exports.getDepartments = function() {
 }
 
 module.exports.addEmployee = function(employeeData) {
-    var employeeNum = ++empCount;
-    return new Promise(function(resolve, reject){
-        for(let r = 0; r < employeeNum; r++){
-            employess.push(employeeData)
-        }
+    employeeData.employeeNum = ++empCount;
+    return new Promise(function(resolve, reject){        
+            employess.push(employeeData);
+            employess.push(employeeData.employeeNum);
         if(employess.length == 0){
             reject("No Result Returned!");
         }
