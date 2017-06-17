@@ -90,29 +90,36 @@
                             <label>Status:</label><br />
                             
                             <label  class="checkbox-inline">
-                                {{#if data.status }}
+                                {{#equal data.status "Full Time"}}
                                 <input type="radio" id="statusFT" name="status" value="Full Time" checked /> Full Time
                             </label>
-                            
+                            {{else}}
                             <label class="checkbox-inline">
-                                {{else}}
-                                <input type="radio" id="statusFT" name="status"  value="Part Time" /> Part Time
-                                {{/if}}
+                                <input type="radio" id="statusFT" name="status"  value="Part Time"  checked /> Part Time
+                                {{/equal}}
                             </label>
-                            
+                             
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="department">Department</label>
                                 <select class="form-control" name="department" id="department">
+                                    {{!--{{#equal data.department "1"}}--}}
                                     <option value="1" >1</option>
+                                    {{!--{{#equal data.department "2"}}--}}
                                     <option value="2" >2</option>
+                                    {{!--{{#equal data.department "3"}}--}}
                                     <option value="3" >3</option>
+                                    {{!--{{#equal data.department "4"}}--}}
                                     <option value="4" >4</option>
+                                    {{!--{{#equal data.department "5"}}--}}
                                     <option value="5" >5</option>
+                                    {{!--{{#equal data.department "6"}}--}}
                                     <option value="6" selected>6</option>
+                                    {{!--{{#equal data.department "7"}}--}}
                                     <option value="7" >7</option>
+                                    {{!--{{/equal}}--}}
                             </select>
                         </div>
                     </div>

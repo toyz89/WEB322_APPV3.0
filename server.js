@@ -37,7 +37,7 @@ app.engine(".hbs", exphbs({
     extname: ".hbs",
     defaultLayout: 'layout',
     helpers: {
-        equal: (lvalue, rvalue, options) => {
+        equal: function (lvalue, rvalue, options) {
         if (arguments.length < 3)
             throw new Error("Handlebars Helper equal needs 2 parameters");
         if (lvalue != rvalue) {
@@ -46,7 +46,8 @@ app.engine(".hbs", exphbs({
             return options.fn(this);
         }
     }
-}}));
+}
+}));
 app.set("view engine", ".hbs");
 
 
