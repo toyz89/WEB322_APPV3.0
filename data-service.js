@@ -4,9 +4,10 @@ var fs = require("fs");
 
 var employess = []; //global array
 var departments = []; //global array
+var empCount = 0;
 
 module.exports.initialize = function(){
-    var emCount = employess.length;
+    empCount = employess.length;
     return new Promise(function(resolve,reject){
         try{
             fs.readFile('./data/employees.json', function(err, data){
@@ -147,5 +148,18 @@ module.exports.getDepartments = function() {
             }
         }
     resolve(arryGetDepartments);
+    });
+}
+
+module.exports.addEmployee = function(employeeData) {
+    var employeeNum = ++empCount;
+    return new Promise(function(resolve, reject){
+        for(let r = 0; r < employeeNum; r++){
+            employess.push(employeeData)
+        }
+        if(employess.length == 0){
+            reject("No Result Returned!");
+        }
+        resolve(employess);
     });
 }
