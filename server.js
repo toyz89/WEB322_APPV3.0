@@ -95,9 +95,9 @@ app.get("/employees", function(req,res){
 
 app.get("/employee/:num", function(req,res){
     data_service.getEmployeeByNum(req.params.num).then(function(data){
-        res.json(data);
+        res.render("employee",{data:data})
     }).catch(function(err){
-        res.json({message: err});
+        res.status(404).send("Sorry!!!!!!!>>>Page Not Found! <<<:(");
     });
 });
 
