@@ -82,18 +82,24 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="employeeManagerNum">Employee's Manager Number:</label>
-                            <input class="form-control" id="employeeManagerNum" name="employeeManagerNum" type="text" value=""/>
+                            <input class="form-control" id="employeeManagerNum" name="employeeManagerNum" type="text" value="{{data.employeeManagerNum}}"/>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Status:</label><br />
+                            
                             <label  class="checkbox-inline">
-                                <input type="radio" id="statusFT" name="status" checked value="Full Time" /> Full Time
+                                {{#if data.status }}
+                                <input type="radio" id="statusFT" name="status" value="Full Time" checked /> Full Time
                             </label>
+                            
                             <label class="checkbox-inline">
+                                {{else}}
                                 <input type="radio" id="statusFT" name="status"  value="Part Time" /> Part Time
+                                {{/if}}
                             </label>
+                            
                         </div>
                     </div>
                     <div class="col-md-3">
