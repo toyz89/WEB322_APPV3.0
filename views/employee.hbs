@@ -1,8 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-
-        <h1>Rozalie Dron - Employee: 21</h1>
-
+        <h1> {{data.firstName}}&nbsp;{{data.last_name}} - Employee: {{data.employeeNum}}</h1>
         <form method="post" action="/employee/update">
 
             <input type="hidden" name="employeeNum" value="21" />
@@ -128,7 +126,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="hireDate">Hire Date</label>
-                            <input class="form-control" id="hireDate" name="hireDate" type="text" value="10/21/2014" readonly />
+                            <input class="form-control" id="hireDate" name="hireDate" type="text" value="{{data.hireDate}}" readonly />
                         </div>
                     </div>
                 </div>

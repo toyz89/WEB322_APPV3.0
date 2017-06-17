@@ -138,6 +138,15 @@ app.post("/employees/update", (req, res) => {
     res.redirect("/employees");
 });
 
+app.post("/employee/update", (req, res) =>{
+    data_service.updateEmployee(req.body).then(function(data){
+        res.redirect("/employees");
+    }).catch(function(err){
+        console.log(err);
+    })
+    console.log(req.body);
+});
+
 app.use(function(req, res) {
   res.status(404).send("Sorry!!!!!!!>>>Page Not Found! <<<:(");
 });

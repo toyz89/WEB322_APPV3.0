@@ -128,7 +128,7 @@ module.exports.getManagers = function() {
                  }
             }
             if (arryGetManagers.length == 0) {
-                     reject("No Result Returned!!!");
+                reject("No Result Returned!!!");
              }
         }
         resolve(arryGetManagers);
@@ -162,4 +162,31 @@ module.exports.addEmployee = function(employeeData) {
         }
         resolve(employess);
     });
+}
+
+module.exports.updateEmployee = function(employeeData){
+    return new Promise(function(resolve,reject){
+        for(let i = 0; i < employess.length; i++){
+            if(employess[i].employeeNum == employeeData.employeeNum){
+                employess.splice(2,1, employeeData.firstname);
+                employess.splice(3,1, employeeData.last_name);
+                // employess.splice(3,1, "employeeData.employeeNum");
+
+                // // Strees Addrees.
+                // employess.splice(1,0, "employeeData.employeeNum");
+                // employess.splice(1,0, "employeeData.employeeNum");
+                // employess.splice(1,0, "employeeData.employeeNum");
+                // employess.splice(1,0, "employeeData.employeeNum");
+                // employess.splice(1,0, "employeeData.employeeNum");
+                // employess.splice(1,0, "employeeData.employeeNum");
+                // employess.splice(1,0, "employeeData.employeeNum");
+                // employess.splice(1,0, "employeeData.employeeNum");
+            }
+        }
+        if(arryByDepartment.length == 0){
+            reject("No Result Returned!!!");
+        }
+    resolve(employess);
+    });
+
 }
