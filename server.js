@@ -124,7 +124,7 @@ app.get("/employees/add", function(req,res){
 
 app.post("/employees/add", function(req,res){
     data_service.addEmployee(req.body).then(function(data){
-        // console.log(req.body);
+        console.log(req.body);
         res.redirect("/employees");
     }).catch(function(err){
         console.log(err);
@@ -132,7 +132,7 @@ app.post("/employees/add", function(req,res){
 });
 
 app.post("/employees/update", (req, res) => {
-    // console.log(req.body);
+    console.log(req.body);
     res.redirect("/employees");
 });
 
