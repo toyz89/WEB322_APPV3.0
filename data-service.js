@@ -167,12 +167,12 @@ module.exports.updateEmployee = function(employeeData){
     return new Promise(function(resolve,reject){
         console.log(employeeData.employeeNum);
         
-        // for(let i = 0; i < employess.length; i++){
-        //     if( employess[i].employeeNum == employeeData.employeeNum) {
+        for(let i = 0; i < employess.length; i++){
+            if( employess[i].employeeNum == employeeData.employeeNum) {
                 console.log(employess.length);
                 employess.splice(employeeData.employeeNum - 1, 1 ,employeeData);
-        //     }
-        // }
+            }
+        }
         if(employess.length == 0){
             reject("No Result Returned!!!");
         }
