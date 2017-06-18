@@ -75,9 +75,9 @@ app.get("/employees", function(req,res){
         });
     }else if(req.query.department){
         data_service.getEmployeesByDepartment(req.query.department).then(function(data){
-            res.render("employeeList",{data:data,title:"Employees"});
+            res.render("employeeList",{ data: data,title:"Employees"});
         }).catch(function(err){
-            res.render("employeeList", {data: {}, title: "Employees"});
+            res.render("employeeList", { data: {}, title: "Employees"});
         });
     }else if(req.query.manager){
          data_service.getEmployeesByManager(req.query.manager).then(function(data){
@@ -87,18 +87,18 @@ app.get("/employees", function(req,res){
         });
     }else{
          data_service.getAllEmployees().then(function(data){
-             res.render("employeeList",{data:data,title:"Employees"});
+             res.render("employeeList",{ data: data,title:"Employees"});
          }).catch(function(err){
              res.render("employeeList", {data: {}, title: "Employees"});
         });
     }
 });
 
-app.get("/employee/:num", function(req,res){
-    data_service.getEmployeeByNum(req.params.num).then(function(data){
-        res.render("employee",{data:data})
+app.get("/employee/:empNum", function(req,res){
+    data_service.getEmployeeByNum(req.params.empNum).then(function(data){
+        res.render("employee", {data: data});
     }).catch(function(err){
-        res.status(404).send("Sorry!!!!!!!>>>Page Not Found! <<<:(");
+        res.status(404).send("Employee Not Found!!!");
     });
 });
 
@@ -120,31 +120,30 @@ app.get("/departments", function(req,res){
 
 app.get("/employees/add", function(req,res){
     res.render("addEmployee");
-    
 });
 
 app.post("/employees/add", function(req,res){
     data_service.addEmployee(req.body).then(function(data){
+        // console.log(req.body);
         res.redirect("/employees");
-        
     }).catch(function(err){
         console.log(err);
     })
-    console.log(req.body);
 });
 
 app.post("/employees/update", (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     res.redirect("/employees");
 });
 
 app.post("/employee/update", (req, res) =>{
     data_service.updateEmployee(req.body).then(function(data){
+        console.log(req.body);
         res.redirect("/employees");
     }).catch(function(err){
         console.log(err);
     })
-    console.log(req.body);
+    
 });
 
 app.use(function(req, res) {

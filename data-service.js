@@ -7,7 +7,6 @@ var departments = []; //global array
 var empCount = 0;
 
 module.exports.initialize = function(){
-    
     return new Promise(function(resolve,reject){
         try{
             fs.readFile('./data/employees.json', function(err, data){
@@ -153,10 +152,10 @@ module.exports.getDepartments = function() {
 }
 
 module.exports.addEmployee = function(employeeData) {
-    employeeData.employeeNum = ++empCount;
-    return new Promise(function(resolve, reject){        
+    empCount++;
+    employeeData.employeeNum = empCount++;
+    return new Promise(function(resolve, reject){
             employess.push(employeeData);
-            employess.push(employeeData.employeeNum);
         if(employess.length == 0){
             reject("No Result Returned!");
         }
@@ -166,27 +165,17 @@ module.exports.addEmployee = function(employeeData) {
 
 module.exports.updateEmployee = function(employeeData){
     return new Promise(function(resolve,reject){
-        for(let i = 0; i < employess.length; i++){
-            if(employess[i].employeeNum == employeeData.employeeNum){
-                employess.splice(2,1, employeeData.firstname);
-                employess.splice(3,1, employeeData.last_name);
-                // employess.splice(3,1, "employeeData.employeeNum");
-
-                // // Strees Addrees.
-                // employess.splice(1,0, "employeeData.employeeNum");
-                // employess.splice(1,0, "employeeData.employeeNum");
-                // employess.splice(1,0, "employeeData.employeeNum");
-                // employess.splice(1,0, "employeeData.employeeNum");
-                // employess.splice(1,0, "employeeData.employeeNum");
-                // employess.splice(1,0, "employeeData.employeeNum");
-                // employess.splice(1,0, "employeeData.employeeNum");
-                // employess.splice(1,0, "employeeData.employeeNum");
-            }
-        }
-        if(arryByDepartment.length == 0){
+        console.log(employeeData.employeeNum);
+        
+        // for(let i = 0; i < employess.length; i++){
+        //     if( employess[i].employeeNum == employeeData.employeeNum) {
+                console.log(employess.length);
+                employess.splice(employeeData.employeeNum - 1, 1 ,employeeData);
+        //     }
+        // }
+        if(employess.length == 0){
             reject("No Result Returned!!!");
         }
     resolve(employess);
     });
-
 }

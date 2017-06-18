@@ -3,7 +3,7 @@
         <h1> {{data.firstName}}&nbsp;{{data.last_name}} - Employee: {{data.employeeNum}}</h1>
         <form method="post" action="/employee/update">
 
-            <input type="hidden" name="employeeNum" value="21" />
+            <input type="hidden" name="employeeNum" value="{{data.employeeNum}}" />
 
             <fieldset>
                 <legend>Personal Information</legend>
@@ -70,9 +70,9 @@
                         <div class="form-group">
                             <label for="isManager">Manager:</label>
                             {{#if data.isManager}}
-                            <input class="form-control" type="checkbox" name="isManager"  checked   />
+                            <input class="form-control" type="checkbox" name="isManager" checked />
                             {{else}}
-                            <input class="form-control" type="checkbox" name="isManager"    />
+                            <input class="form-control" type="checkbox" name="isManager" />
                             {{/if}}
                         </div>
                     </div>
@@ -93,10 +93,9 @@
                             </label>
                             {{else}}
                             <label class="checkbox-inline">
-                                <input type="radio" id="statusFT" name="status"  value="Part Time"  checked /> Part Time
+                                <input type="radio" id="statusFT" name="status"  value="Part Time" checked /> Part Time
                                 {{/equal}}
                             </label>
-                             
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -130,13 +129,9 @@
                         </div>
                     </div>
                 </div>
-
             </fieldset>
-
             <hr />
-
             <input type="submit" class="btn btn-primary pull-right" value="Update Employee" /><br /><br /><br />
-
         </form>
     </div>
 </div>
