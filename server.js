@@ -4,7 +4,7 @@
  *  of this assignment has been copied manually or electronically from any other source
  *  (including 3rd party web sites) or distributed to other students.
  *
- *  Name: ___Xiaochen Wang__ Student ID: ___015297153_____ Date: ____09-06-2017__
+ *  Name: ___Xiaochen Wang__ Student ID: ___015297153_____ Date: ____19-06-2017__
  *
  *  Online (Heroku) Link:  https://cryptic-waters-33866.herokuapp.com
  *
@@ -50,7 +50,6 @@ app.engine(".hbs", exphbs({
 }));
 app.set("view engine", ".hbs");
 
-
 // alternative method.
 // app.use(express.static(path.join(__dirname, 'public')));
 
@@ -66,7 +65,6 @@ app.get("/about", function(req, res) {
 });
 
 app.get("/employees", function(req, res) {
-
     if (req.query.status) {
         data_service.getEmployeesByStatus(req.query.status).then(function(data) {
             res.render("employeeList", { data: data, title: "Employees" });
@@ -143,7 +141,6 @@ app.post("/employee/update", (req, res) => {
     }).catch(function(err) {
         console.log(err);
     })
-
 });
 
 app.use(function(req, res) {
