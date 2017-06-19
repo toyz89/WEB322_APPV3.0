@@ -20,10 +20,10 @@ var HTTP_PORT = process.env.PORT || 8080;
 
 function onHttpStart() {
     console.log("Express http server listening on: " + HTTP_PORT);
-    return new Promise(function(res, req) {
-        data_service.initialize().then(function(data) {
+    return new Promise((res, req) => {
+        data_service.initialize().then((data) => {
             console.log(data)
-        }).catch(function(err) {
+        }).catch((err) => {
             console.log(err);
         });
     });
@@ -37,7 +37,7 @@ app.engine(".hbs", exphbs({
     extname: ".hbs",
     defaultLayout: 'layout',
     helpers: {
-        equal: function(lvalue, rvalue, options) {
+        equal: (lvalue, rvalue, options) => {
             if (arguments.length < 3)
                 throw new Error("Handlebars Helper equal needs 2 parameters");
             if (lvalue != rvalue) {
@@ -54,77 +54,77 @@ app.set("view engine", ".hbs");
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // setup a 'route' to listen on the default url path (http://localhost)
-app.get("/", function(req, res) {
+app.get("/", (req, res) => {
     //res.send("Hello World<br /><a href='/about'>Go to the about page</a>");
     res.render("home");
 });
 
 // setup another route to listen on /about
-app.get("/about", function(req, res) {
+app.get("/about", (req, res) => {
     res.render("about");
 });
 
-app.get("/employees", function(req, res) {
+app.get("/employees", (req, res) => {
     if (req.query.status) {
-        data_service.getEmployeesByStatus(req.query.status).then(function(data) {
+        data_service.getEmployeesByStatus(req.query.status).then((data) => {
             res.render("employeeList", { data: data, title: "Employees" });
-        }).catch(function(err) {
+        }).catch((err) => {
             res.render("employeeList", { data: {}, title: "Employees" });
         });
     } else if (req.query.department) {
-        data_service.getEmployeesByDepartment(req.query.department).then(function(data) {
+        data_service.getEmployeesByDepartment(req.query.department).then((data) => {
             res.render("employeeList", { data: data, title: "Employees" });
-        }).catch(function(err) {
+        }).catch((err) => {
             res.render("employeeList", { data: {}, title: "Employees" });
         });
     } else if (req.query.manager) {
-        data_service.getEmployeesByManager(req.query.manager).then(function(data) {
+        data_service.getEmployeesByManager(req.query.manager).then((data) => {
             res.render("employeeList", { data: data, title: "Employees" });
-        }).catch(function(err) {
+        }).catch((err) => {
             res.render("employeeList", { data: {}, title: "Employees" });
         });
     } else {
-        data_service.getAllEmployees().then(function(data) {
+        data_service.getAllEmployees().then((data) => {
             res.render("employeeList", { data: data, title: "Employees" });
-        }).catch(function(err) {
+        }).catch((err) => {
             res.render("employeeList", { data: {}, title: "Employees" });
         });
     }
 });
 
-app.get("/employee/:empNum", function(req, res) {
-    data_service.getEmployeeByNum(req.params.empNum).then(function(data) {
+app.get("/employee/:empNum", (req, res) => {
+    data_service.getEmployeeByNum(req.params.empNum).then((data) => {
         res.render("employee", { data: data });
-    }).catch(function(err) {
+    }).catch((err) => {
         res.status(404).send("Employee Not Found!!!");
     });
 });
 
-app.get("/managers", function(req, res) {
-    data_service.getManagers().then(function(data) {
+app.get("/managers", (req, res) => {
+    data_service.getManagers().then((data) => {
         res.render("employeeList", { data: data, title: "Employees (Managers)" });
-    }).catch(function(err) {
+    }).catch((err) => {
         res.render("employeeList", { data: {}, title: "Employees {Managers}" });
     });
 });
 
-app.get("/departments", function(req, res) {
-    data_service.getDepartments().then(function(data) {
+app.get("/departments", (req, res) => {
+    data_service.getDepartments().then((data) => {
         res.render("departmentList", { data: data, title: "Departments" });
-    }).catch(function(err) {
+    }).catch((err) => {
         res.render("departmentList", { data: {}, title: "Departments" });
     });
 });
 
-app.get("/employees/add", function(req, res) {
+app.get("/employees/add", (req, res) => {
     res.render("addEmployee");
 });
 
-app.post("/employees/add", function(req, res) {
-    data_service.addEmployee(req.body).then(function(data) {
+app.post("/employees/add", (req, res) => {
+    data_service.addEmployee(req.body).then((data) => {
         console.log(req.body);
         res.redirect("/employees");
-    }).catch(function(err) {
+    }).catch((err) => {
         console.log(err);
     })
 });
@@ -135,15 +135,15 @@ app.post("/employees/update", (req, res) => {
 });
 
 app.post("/employee/update", (req, res) => {
-    data_service.updateEmployee(req.body).then(function(data) {
+    data_service.updateEmployee(req.body).then((data) => {
         console.log(req.body);
         res.redirect("/employees");
-    }).catch(function(err) {
+    }).catch((err) => {
         console.log(err);
     })
 });
 
-app.use(function(req, res) {
+app.use((req, res) => {
     res.status(404).send("Sorry!!!!!!!>>>Page Not Found! <<<:(");
 });
 

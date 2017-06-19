@@ -6,37 +6,38 @@ var employess = []; //global array
 var departments = []; //global array
 var empCount = 0;
 
-module.exports.initialize = function() {
-        return new Promise(function(resolve, reject) {
-            try {
-                fs.readFile('./data/employees.json', function(err, data) {
-                    if (err) throw err;
-                    employess = JSON.parse(data);
-                    empCount = employess.length;
-                });
-                fs.readFile('./data/departments.json', function(err, data) {
-                    if (err) throw err;
-                    departments = JSON.parse(data);
-                });
-            } catch (ex) {
-                reject("Unable to read file!");
-            }
-            resolve("Good!!! It's successfully read JSON file.");
-        });
-    }
-    // alternative solution for initialize JSON file:
-    // module.exports.initialize = function(){
-    //     return new Promise(function (resolve,reject){
-    //         fs.readFile('./data/departments.json', function(err,data){
-    //             if(err){
-    //                 reject("Can Not Open Employees.json File");
-    //             }else{
-    //                 employess = JSON.parse(data);
+module.exports.initialize = () => {
+    return new Promise((resolve, reject) => {
+        try {
+            fs.readFile('./data/employees.json', (err, data) => {
+                if (err) throw err;
+                employess = JSON.parse(data);
+                empCount = employess.length;
+            });
+            fs.readFile('./data/departments.json', (err, data) => {
+                if (err) throw err;
+                departments = JSON.parse(data);
+            });
+        } catch (ex) {
+            reject("Unable to read file!");
+        }
+        resolve("Good!!! It's successfully read JSON file.");
+    });
+}
 
-//                 fs.readFile('./data/employees.json', function(err,data){
-//                     if(err){
+// alternative solution
+// // for initialize JSON file:
+// module.exports.initialize = function() {
+//     return new Promise(function(resolve, reject) {
+//         fs.readFile('./data/departments.json', function(err, data) {
+//             if (err) {
+//                 reject("Can Not Open Employees.json File");
+//             } else {
+//                 employess = JSON.parse(data);
+//                 fs.readFile('./data/employees.json', function(err, data) {
+//                     if (err) {
 //                         reject("Can Not Open Department.json File ");
-//                     }else{
+//                     } else {
 //                         departments = JSON.parse(data);
 //                     }
 //                 });
@@ -45,9 +46,9 @@ module.exports.initialize = function() {
 //     });
 // }
 
-module.exports.getAllEmployees = function() {
+module.exports.getAllEmployees = () => {
     var arryAllEmployees = [];
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
         for (var i = 0; i < employess.length; i++) {
             arryAllEmployees.push(employess[i]);
         }
@@ -58,9 +59,9 @@ module.exports.getAllEmployees = function() {
     })
 }
 
-module.exports.getEmployeesByStatus = function(status) {
+module.exports.getEmployeesByStatus = (status) => {
     var arryByStatus = [];
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
         for (let i = 0; i < employess.length; i++) {
             if (employess[i].status == status) {
                 arryByStatus.push(employess[i]);
@@ -73,9 +74,9 @@ module.exports.getEmployeesByStatus = function(status) {
     });
 }
 
-module.exports.getEmployeesByDepartment = function(department) {
+module.exports.getEmployeesByDepartment = (department) => {
     var arryByDepartment = [];
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
         for (let i = 0; i < employess.length; i++) {
             if (employess[i].department == department) {
                 arryByDepartment.push(employess[i]);
@@ -88,10 +89,10 @@ module.exports.getEmployeesByDepartment = function(department) {
     });
 }
 
-module.exports.getEmployeesByManager = function(manager) {
+module.exports.getEmployeesByManager = (manager) => {
     var arrayGetEmployeesByMannager = [];
 
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
         for (let i = 0; i < employess.length; i++) {
             if (employess[i].employeeManagerNum == manager) {
                 arrayGetEmployeesByMannager.push(employess[i]);
@@ -104,8 +105,8 @@ module.exports.getEmployeesByManager = function(manager) {
     });
 }
 
-module.exports.getEmployeeByNum = function(num) {
-    return new Promise(function(resolve, reject) {
+module.exports.getEmployeeByNum = (num) => {
+    return new Promise((resolve, reject) => {
         for (let j = 0; j < employess.length; j++) {
             if (employess[j].employeeNum == num) {
                 resolve(employess[j]);
@@ -115,9 +116,9 @@ module.exports.getEmployeeByNum = function(num) {
     });
 }
 
-module.exports.getManagers = function() {
+module.exports.getManagers = () => {
     var arryGetManagers = [];
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
         if (employess.length == 0) {
             reject("No Result Returned!!!");
         } else {
@@ -134,9 +135,9 @@ module.exports.getManagers = function() {
     });
 }
 
-module.exports.getDepartments = function() {
+module.exports.getDepartments = () => {
     var arryGetDepartments = [];
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
         if (employess.length == 0) {
             reject("No Result Returned!!!");
         } else {
@@ -151,9 +152,9 @@ module.exports.getDepartments = function() {
     });
 }
 
-module.exports.addEmployee = function(employeeData) {
+module.exports.addEmployee = (employeeData) => {
     employeeData.employeeNum = ++empCount;
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
         employess.push(employeeData);
         if (employess.length == 0) {
             reject("No Result Returned!");
@@ -162,8 +163,8 @@ module.exports.addEmployee = function(employeeData) {
     });
 }
 
-module.exports.updateEmployee = function(employeeData) {
-    return new Promise(function(resolve, reject) {
+module.exports.updateEmployee = (employeeData) => {
+    return new Promise((resolve, reject) => {
         for (let i = 0; i < employess.length; i++) {
             if (employess[i].employeeNum == employeeData.employeeNum) {
                 employess.splice(employeeData.employeeNum - 1, 1, employeeData);
