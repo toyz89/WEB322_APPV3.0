@@ -59,4 +59,5 @@ P{
 table thead tr th{
 	table-layout: fixed;
 	white-space: nowrap;
+	background:transparent;
 }

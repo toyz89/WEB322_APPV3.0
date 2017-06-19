@@ -2,9 +2,7 @@
     <div class="col-md-12">
         <h1> {{data.firstName}}&nbsp;{{data.last_name}} - Employee: {{data.employeeNum}}</h1>
         <form method="post" action="/employee/update">
-
             <input type="hidden" name="employeeNum" value="{{data.employeeNum}}" />
-
             <fieldset>
                 <legend>Personal Information</legend>
                 <div class="row">
