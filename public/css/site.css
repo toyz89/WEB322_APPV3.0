@@ -55,3 +55,8 @@ footer h2{
 P{
 	font-family: 'Pacifico', cursive;
 }
+
+table, thead, tr, th{
+	margin: auto;
+	border-top-width:10px;
+}
