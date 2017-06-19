@@ -89,7 +89,7 @@ app.get("/employees", function(req,res){
          data_service.getAllEmployees().then(function(data){
              res.render("employeeList",{ data: data,title:"Employees"});
          }).catch(function(err){
-             res.render("employeeList", {data: {}, title: "Employees"});
+             res.render("employeeList", {data: {}, title:"Employees"});
         });
     }
 });
