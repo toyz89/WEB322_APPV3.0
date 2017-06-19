@@ -102,8 +102,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="department">Department</label>
-                                <select class="form-control" name="department" id="department">
-                                    {{#equal data.department "1"}}
+                            <select class="form-control" name="department" id="department">
+                                {{#equal data.department "1"}}
                                     <option value="1" selected>1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -111,27 +111,61 @@
                                     <option value="5">5</option>
                                     <option value="6">6</option>
                                     <option value="7">7</option>
-                                    {{else}}
-                                    <option value="1" >1</option>
+                                {{/equal}}
+                                {{#equal data.department "2"}}
+                                    <option value="1">1</option>
                                     <option value="2" selected>2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                     <option value="6">6</option>
                                     <option value="7">7</option>
-                                    {{!--{{#else}}
-                                    <option value="2" selected>2</option>--}}
-                                    {{!--{{#equal data.department "3"}}--}}
-                                    {{!--<option value="3" selected>3</option>
-                                    {{#equal data.department "4"}}
+                                {{/equal}}
+                                {{#equal data.department "3"}}
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3"selected>3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                {{/equal}}
+                                {{#equal data.department "4"}}
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                     <option value="4" selected>4</option>
-                                    {{#equal data.department "5"}}
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                {{/equal}}
+                                {{#equal data.department "5"}}
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
                                     <option value="5" selected>5</option>
-                                    {{#equal data.department "6"}}
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                {{/equal}}
+                                {{#equal data.department "6"}}
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                     <option value="6" selected>6</option>
-                                    {{#equal data.department "7"}}
-                                    <option value="7" selected>7</option>--}}
-                                    {{/equal}}
+                                    <option value="7">7</option>
+                                {{/equal}}
+                                {{#equal data.department "7"}}
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7" selected>7</option>
+                                {{/equal}}
                             </select>
                         </div>
                     </div>

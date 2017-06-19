@@ -112,9 +112,9 @@ app.get("/managers", function(req,res){
 
 app.get("/departments", function(req,res){
       data_service.getDepartments().then(function(data){
-          res.render("departmentList", {data: data, title: "Department"});
+          res.render("departmentList", {data: data, title: "Departments"});
       }).catch(function(err){
-          res.render("departmentList",{data: {}, title: "Department"});
+          res.render("departmentList",{data: {}, title: "Departments"});
       });
 });
 

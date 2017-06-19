@@ -10,33 +10,37 @@
         <div class="container">
             <div class="row">
 				<div class="col-md-12">
-					<h2>myApp</h2>
+					<h1>myApp</h1>
 				</div>
 			</div>
 		</div>
       </header>
      <nav>
 		<div class="container">
-			 <ul class = "pull-left">
-                 <li><a href = "/"> Home </a></li>
-                <li><a href = "/about"> About </a></li>
-            </ul>
-             <ul class = "pull-right">
-                <li><a href = "/employees"> All Employees </a></li>
-                <li><a href = "/managers"> Managers </a></li>
-                <li><a href = "/departments"> Departments </a></li>
-            </ul>
+            <div class="row">
+			     <ul class = "pull-left">
+                    <li><a href = "/"> Home </a></li>
+                    <li><a href = "/about"> About </a></li>
+                 </ul>
+                 <ul class = "pull-right">
+                    <li><a href = "/employees"> All Employees </a></li>
+                    <li><a href = "/managers"> Managers </a></li>
+                    <li><a href = "/departments"> Departments </a></li>
+                </ul>
+            </div>
 		</div>
 	</nav>
    <div class="container">
-       {{{body}}}
-    </div>
-    <footer>
-		<div class="container">
-            <div class="col-md-12">
-				<h2>&#169;2017 - Xiaochen Wang</h2>
-			</div>
-		</div>
-   </footer>
+       {{{body}}} {{!-- The handlerbars will inject HERE!!!! --}}
+   </div>
+        <footer>
+		    <div class="container">
+                <div class = "row">
+                    <div class="col-md-12">
+				        <h2>&#169;2017 - Xiaochen Wang</h2>
+			        </div>
+                </div>
+		    </div>
+        </footer>
     </body>
 </html>
