@@ -3,7 +3,7 @@ WEB322_ASSIGNMENT4
 
 Here the **[WEB322_APPV3.0](https://cryptic-waters-33866.herokuapp.com/)** website on the Heroku.
 
- # [#f03c15]: PLEASE DO NOT COPY MY WORKS DIRECTLY. #
+ # :hand::hand::hand:PLEASE DO NOT COPY MY WORKS DIRECTLY. :hand::hand::hand:#
 
 
 Powerd by: 
