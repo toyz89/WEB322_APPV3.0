@@ -65,7 +65,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="isManager">Manager:</label>
-                            <input class="form-control" type="checkbox" name="isManager" />
+                            <input class="form-control" type="checkbox" id="isManager" name="isManager" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -77,12 +77,11 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Status:</label><br />
-                                <label  class="checkbox-inline">
-                                    <input type="radio" id="statusF" name="status1" value="Full Time" /> Full Time
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="radio" id="statusT" name="status2" value="Part Time" /> Part Time
-                                </label>
+                            <label  class="checkbox-inline">
+                                <input type="radio" id="statusFulltime" name="status" value="Full Time" /> Full Time
+                            </label>
+                            <label class="checkbox-inline">
+                                 <input type="radio" id="statusParttime" name="status" value="Part Time" /> Part Time
                             </label>
                         </div>
                     </div>
@@ -90,6 +89,7 @@
                         <div class="form-group">
                             <label for="department">Department</label>
                                 <select class="form-control" name="department" id="department">
+                                    <option value=""></option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
