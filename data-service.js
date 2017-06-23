@@ -153,6 +153,7 @@ module.exports.getDepartments = () => {
 }
 
 module.exports.addEmployee = (employeeData) => {
+    employeeData.isManager = (employeeData.isManager) ? true : false;
     employeeData.employeeNum = ++empCount;
     return new Promise((resolve, reject) => {
         employess.push(employeeData);
@@ -164,6 +165,7 @@ module.exports.addEmployee = (employeeData) => {
 }
 
 module.exports.updateEmployee = (employeeData) => {
+    employeeData.isManager = (employeeData.isManager) ? true : false;
     return new Promise((resolve, reject) => {
         for (let i = 0; i < employess.length; i++) {
             if (employess[i].employeeNum == employeeData.employeeNum) {
