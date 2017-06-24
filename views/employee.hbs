@@ -91,7 +91,8 @@
                                 <label  class="checkbox-inline">
                                     <input type="radio" id="statusParttime" name="status" value="Part Time"  /> Part Time
                                 </label>
-                                {{else}}
+                                {{/equal}}
+                                {{#equal data.status "Part Time"}}
                                 <label  class="checkbox-inline">
                                     <input type="radio" id="statusFulltime" name="status" value="Full Time"  /> Full Time
                                 </label>
@@ -99,6 +100,14 @@
                                     <input type="radio" id="statusParttime" name="status" value="Part Time" checked="" /> Part Time
                                 </label>
                                 {{/equal}}
+                                {{#unless data.status}}
+                                <label  class="checkbox-inline">
+                                    <input type="radio" id="statusFulltime" name="status" value="Full Time"  /> Full Time
+                                </label>
+                                <label  class="checkbox-inline">
+                                    <input type="radio" id="statusParttime" name="status" value="Part Time" /> Part Time
+                                </label>
+                                {{/unless}}
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -106,7 +115,7 @@
                             <label for="department">Department</label>
                             <select class="form-control" name="department" id="department">
                                 {{#equal data.department ""}}
-                                    <option value=""></option>
+                                    <option value="">Choose</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
