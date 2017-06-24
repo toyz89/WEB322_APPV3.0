@@ -104,7 +104,7 @@ app.get("/managers", (req, res) => {
     data_service.getManagers().then((data) => {
         res.render("employeeList", { data: data, title: "Employees (Managers)" });
     }).catch((err) => {
-        res.render("employeeList", { data: {}, title: "Employees {Managers}" });
+        res.render("employeeList", { data: {}, title: "Employees (Managers)" });
     });
 });
 
